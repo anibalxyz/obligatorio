@@ -28,7 +28,7 @@ bool insertarLineaProcesador(Procesador &p);
 
 //Pre-Cond:	posicionLinea >=0 && posicionLinea <= cantLineas(procesador)+1
 //Pos-Cond:	inserta una nueva linea en la Posicion "posicionLinea" del Procesador "p".
-void insertarLineaEnPosicion(Procesador &p, int posicionLinea);
+bool insertarLineaEnPosicion(Procesador &p, int posicionLinea);
 
 //************************ SELECTORAS *******************************
 //Pre-Cond: No tiene
@@ -43,7 +43,7 @@ int cantLineasProcesador(Procesador p);
 
 //Pre-Cond:	posicionLinea >=0 && posicionLinea <= cantFilas(p)+1
 //Pos-Cond:	elimina la linea de la Posicion "posicionLinea".
-void borrarLineaProcesador(Procesador &a, int posicionLinea);
+bool borrarLineaProcesador(Procesador &a, int posicionLinea);
 
 
 //Pre-Cond:	
@@ -53,33 +53,33 @@ void comprimirTextoProcesador(Procesador &p);
 
 //Pre-Cond:	posicionLinea<=cantFilasProcesador (p);
 //Pos-Cond: Inserta una nueva palabra de nombre: "nomPalabra" en la posicion "posicionLinea" y la posicion "posicionPalabra
-void insertarPalabraProcesador(Procesador &p, int posicionLinea, int posicionPalabra, Cadena palabraIngresar);
+bool insertarPalabraProcesador(Procesador &p, int posicionLinea, int posicionPalabra, Cadena palabraIngresar);
 
 
 //Pre-Cond:	posicionLinea<=cantFilasProcesador (p);
 //Pos-Cond: imprime todas las Palabras de la Posicion "posicionLinea"
-void imprimirLinea(Procesador p, int posicionLinea);
+bool imprimirLinea(Procesador p, int posicionLinea);
 
 //Pre-Cond:
 //Pos-Cond:
-void ingresarPalabraDiccionarioProcesador(Procesador &p, Cadena nomPalabra);
+bool ingresarPalabraDiccionarioProcesador(Procesador &p, Cadena nomPalabra);
 
 //Pre-Cond:
 //Pos-Cond:
-void borrarPalabraDiccionarioProcesador(Procesador &p, Cadena palabraABorrar);
+bool borrarPalabraDiccionarioProcesador(Procesador &p, Cadena palabraABorrar);
 
 //Pre-Cond:
 //Pos-Cond:
-void imprimirDiccionarioProcesador(Procesador p);
+bool imprimirDiccionarioProcesador(Procesador p);
 
 //Pre-Cond:
 //Pos-Cond:
-void imprimirTextoIncorrectoProcesador(Procesador p);
+bool imprimirTextoIncorrectoProcesador(Procesador p);
 
 
 //Pre-Cond:	el procesador 
 //Pos-Cond:
-void imprimirUltimasPalabrasProcesador(Procesador p);
+bool imprimirUltimasPalabrasProcesador(Procesador p);
 
 //************************* PREDICADOS  ****************************
 
@@ -104,10 +104,10 @@ void borrarProcesadorCompleto (Procesador &p);
 
 //Pre-Cond: No tiene
 //Pos-Cond: 
-void borrarPalabraProcesador(Procesador &p, int posicionLinea, int posicionPalabra);
+bool borrarPalabraProcesador(Procesador &p, int posicionLinea, int posicionPalabra);
 
 //Pre-Cond: No tiene
 //Pos-Cond: 
-void borrarOcurrenciasPalabraEnLineaProcesador(Procesador &p, int posicionLinea, Cadena palabraABorrar);
+bool borrarOcurrenciasPalabraEnLineaProcesador(Procesador &p, int posicionLinea, Cadena palabraABorrar);
 
 #endif

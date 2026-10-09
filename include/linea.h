@@ -27,6 +27,13 @@ void agregarLinea (Linea &linea);
 
 
 
+//***********************AGREGADO 05/10/2026*****************************
+//Pre-cond: <0posicionLinea<cantidadLineas(linea)
+//Pos-Cond: inserta una nueva linea en la posicion "posicionLinea"
+void insertarLineaPosicion(Linea &linea, unsigned int posicionLinea);
+
+
+
 //*********************** 	AGREGADO 23/09/2026 ******************************
 //Pre-cond:    0<posicion<=cantidadPalabras+1
 //Pos-Cond:   Agrega en la Linea "linea" una nueva Palabra en la Posición "posicionPalabra" 
@@ -79,6 +86,12 @@ int cantidadOcurenciasPalabraEnLinea(Linea linea, char* palabra);
 //Pre-Cond: No tiene
 //Pos-Cond:	Retorna la Palabra que se encuentra al comienzo de la linea;
 Palabra primerPalabraLinea(Linea linea);
+
+
+//********************************AGREADO 05/10/2026********************************
+//Pre-Cond: No tiene
+//Pos-Cond:	Renumera sumando 1 a todas las lineas siguentes a la Linea "linea";
+void renumerarLineas(Linea &linea);
 
 
 //********************* PREDICADOS ************************* */
