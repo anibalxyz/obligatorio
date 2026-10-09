@@ -3,6 +3,5 @@
 #include "../include/version.h"
 
 
-
-
-struct _rep_version {};
+struct _rep_version {
+};

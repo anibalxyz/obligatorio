@@ -3,4 +3,5 @@
 #include "../include/palabra.h"
 
 
-struct _rep_palabra {};
+struct _rep_palabra {
+};

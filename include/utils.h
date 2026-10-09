@@ -13,14 +13,16 @@
 typedef unsigned int nat;
 
 // tipos para arreglos
-typedef nat *ArregloNats;       // arreglo de nat
-typedef char *ArregloChars;     // arreglo de char
-typedef bool *ArregloBools;     // arreglo de bool
+typedef nat *ArregloNats; // arreglo de nat
+typedef char *ArregloChars; // arreglo de char
+typedef bool *ArregloBools; // arreglo de bool
 typedef double *ArregloDoubles; // arreglo de double
 
 // leen desde la entrada estándar y devuelven el elemento leído
 nat leerNat();
+
 char leerChar();
+
 double leerDouble();
 
 /*

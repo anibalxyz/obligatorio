@@ -24,14 +24,14 @@ Palabra crearPalabraVacia();
 
 //Pre-Cond:	posicion<=cantidadPalabras(palabra)+1
 //Pos-Cond:	inserta la palabra de nombre "nomPalabra" en la Posicion "posicion"
-void insertarPalabraPosicion(Palabra &palabra, unsigned int posicion, char* nomPalabra);
+void insertarPalabraPosicion(Palabra &palabra, unsigned int posicion, char *nomPalabra);
 
 
 //*************************  SELECTORAS **********************
 
 //Pre-Cond:esVaciaPalabra(palabra)retorna false
 //Pos-Cond:retorna un puntero a un arreglo de char.
-char* obtenerNombrePalabra(Palabra palabra);
+char *obtenerNombrePalabra(Palabra palabra);
 
 
 //Pre-Cond:	esVaciaPalabra(palabra) retorna false
@@ -39,14 +39,10 @@ char* obtenerNombrePalabra(Palabra palabra);
 Palabra siguientePalabra(Palabra palabra);
 
 
-
-
 //*************************   AGREGADO 23/09/2026   ************************
 //Pre-Cond:	No tiene
 //Pos-Cond:	Retorna la cantidad de palabras que hay en la Palabra "palabra"
 int cantidadPalabras(Palabra palabra);
-
-
 
 
 //*************************  PREDICADOS **********************8
@@ -56,8 +52,7 @@ bool esVaciaPalabra(Palabra palabra);
 
 //Pre-Cond:	No tiene
 //Pos-Cond:	Retorna true si la palabra de nombre "nomPalabra" existe en la Palabra "palabra"
-bool existePalabra(Palabra palabra, char* nomPalabra);
-
+bool existePalabra(Palabra palabra, char *nomPalabra);
 
 
 //*************************  DESTRUCTORAS  *************************
@@ -73,7 +68,7 @@ void eliminarPalabra(Palabra &palabra);
 
 //Pre-Cond:	No tiene
 //Pos-Cond:	Elimina todas las palabras de nombre nomPalabras de "palabra"
-void eiminarTodasLasPalabras(Palabra &palabra, char* nomPalabra);
+void eiminarTodasLasPalabras(Palabra &palabra, char *nomPalabra);
 
 
 //Pre-Cond:	La Posicion "posicion" existe en palabra
@@ -82,6 +77,6 @@ void eliminarPalabraPosicion(Palabra &palabra, unsigned int posicion);
 
 
 //libera toda la memoria del Arreglo "arreglo"
-void eliminarArreglo(char* arreglo);
+void eliminarArreglo(char *arreglo);
 
 #endif

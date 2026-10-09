@@ -3,7 +3,8 @@
 #include "../include/palabra.h"
 #include "../include/linea.h"
 #include "../include/procesador.h"
-typedef char* Cadena;
+typedef char *Cadena;
 
 
-struct _rep_procesador {};
+struct _rep_procesador {
+};

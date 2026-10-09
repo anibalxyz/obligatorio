@@ -22,9 +22,7 @@ Linea crearLineaVacia();
 
 //Pre-cond: No tiene
 //Pos-Cond: Agrega una nueva linea al final de la Linea "linea"
-void agregarLinea (Linea &linea);
-
-
+void agregarLinea(Linea &linea);
 
 
 //***********************AGREGADO 05/10/2026*****************************
@@ -33,13 +31,10 @@ void agregarLinea (Linea &linea);
 void insertarLineaPosicion(Linea &linea, unsigned int posicionLinea);
 
 
-
 //*********************** 	AGREGADO 23/09/2026 ******************************
 //Pre-cond:    0<posicion<=cantidadPalabras+1
 //Pos-Cond:   Agrega en la Linea "linea" una nueva Palabra en la Posición "posicionPalabra" 
-void insertarPalabraEnPosicion(Linea &linea, unsigned int posicionPalabra, char* nomPalabra);
-
-
+void insertarPalabraEnPosicion(Linea &linea, unsigned int posicionPalabra, char *nomPalabra);
 
 
 //************************ SELECTORAS ********************* */
@@ -71,7 +66,7 @@ int cantidadLineas(Linea linea);
 
 //Pre-Cond: existe el numero de linea numLinea
 //Pos-Cond: Retorna un puntero a la linea numLinea
-Linea numeroLinea(Linea linea,int numLinea);
+Linea numeroLinea(Linea linea, int numLinea);
 
 
 //Pre-Cond: No tiene
@@ -80,7 +75,7 @@ int cantidadDePalabraEnLinea(Linea linea);
 
 //Pre-Cond: No tiene
 //Pos-Cond:	Retorna la cantidad de ocurrencias de la Cadena palabra en la Linea "linea"
-int cantidadOcurenciasPalabraEnLinea(Linea linea, char* palabra);
+int cantidadOcurenciasPalabraEnLinea(Linea linea, char *palabra);
 
 
 //Pre-Cond: No tiene
@@ -98,28 +93,27 @@ void renumerarLineas(Linea &linea);
 
 //Pre-Cond: No tiene
 //Pos-Cond: Retorna true si la Linea "linea" no tiene lineas.
-bool esVaciaLinea (Linea linea);
+bool esVaciaLinea(Linea linea);
 
 //Pre-Cond: No tiene 
 //Pos-Cond: retorna true si en la Linea "linea" la linea numLinea existe. 
-bool existeLinea (Linea linea, int numLinea);
+bool existeLinea(Linea linea, int numLinea);
 
 //Pre-Cond: no tiene
 //Pos-Cond: retorna true si la palabra de nombre "nomPalabra" existe en la estructura Linea "linea" 
-bool existePalabraLinea(Linea linea, char* nomPalabra);
+bool existePalabraLinea(Linea linea, char *nomPalabra);
 
 
 //****************  DESTRUCTORAS ***********************
 
 //Pre-Cond: existeLinea(linea, numLinea) retorna true;
 //Pos-Cond: Elimina la linea num linea renumerando todas las otras lineas debajo de ella.
-void eliminarLinea (Linea &linea, int numLinea);
+void eliminarLinea(Linea &linea, int numLinea);
 
 //Pre-Cond:	No tiene
 //Pos-Cond: Elimina la Palabra llamada  de nombre "nomPalabra" de la Linea "linea" en todas las ocurrencias.
 //			Retornando la cantidad de palabras eliminadas.
-int eliminarPalabraLinea(Linea &linea, char* nomPalabra);
-
+int eliminarPalabraLinea(Linea &linea, char *nomPalabra);
 
 
 //***************************  AGREGADO 23/09/20026 ***************************
@@ -130,6 +124,6 @@ void eliminarPalabraPosicion(Linea &linea, int posicionPalabra);
 
 //Pre-Cond: No tiene
 //Pos-Cond: Libera toda la memoria de la Linea "linea"       
-void destruirLinea (Linea &linea);
+void destruirLinea(Linea &linea);
 
 #endif

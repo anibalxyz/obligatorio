@@ -11,7 +11,7 @@
 #ifndef _PROCESADOR_H
 #define _PROCESADOR_H
 
-typedef char* Cadena;
+typedef char *Cadena;
 typedef struct _rep_procesador *Procesador;
 
 
@@ -33,7 +33,7 @@ bool insertarLineaEnPosicion(Procesador &p, int posicionLinea);
 //************************ SELECTORAS *******************************
 //Pre-Cond: No tiene
 //Pos-Cond: Retorna un puntero a un arreglo con el nombre del Procesador "p"
-char* obtenerNombreProcesador(Procesador p);
+char *obtenerNombreProcesador(Procesador p);
 
 
 //Pre-Cond: No tiene
@@ -100,7 +100,7 @@ void borrarOcurrenciasPalabraEnTextoProcesador(Procesador &p, Cadena palabraABor
 //Pre-Cond: No tiene
 //Pos-Cond: se elimina toda la memoria reservada por el Procesador "p"
 // 			retorna 1 si la funcion proceso bien o -1 en caso contrario
-void borrarProcesadorCompleto (Procesador &p);
+void borrarProcesadorCompleto(Procesador &p);
 
 //Pre-Cond: No tiene
 //Pos-Cond: 

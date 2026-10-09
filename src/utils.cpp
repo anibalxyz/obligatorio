@@ -10,21 +10,21 @@
 #include "stdio.h"
 
 nat leerNat() {
-  nat res;
-  scanf("%u", &res);
-  return res;
+    nat res;
+    scanf("%u", &res);
+    return res;
 }
 
 char leerChar() {
-  char res;
-  scanf(" %c", &res);
-  return res;
+    char res;
+    scanf(" %c", &res);
+    return res;
 }
 
 double leerDouble() {
-  double res;
-  scanf("%lf", &res);
-  return res;
+    double res;
+    scanf("%lf", &res);
+    return res;
 }
 
 void leerChars(ArregloChars cs) { scanf("%s", cs); }
