@@ -1,8 +1,6 @@
 /* 5600400 */ // sustituiir con los 7 dígitos de la cédula
 #include "../include/linea.h"
-
 #include <stdio.h>
-
 #include "../include/palabra.h"
 
 struct _rep_linea {
@@ -19,9 +17,9 @@ struct _rep_linea {
 //Pos-Cond: Retorna una Linea vacia
 Linea crearLineaVacia() {
     Linea nueva = new _rep_linea();
-    nueva->anterior = nullptr;
-    nueva->siguiente = nullptr;
-    nueva->primera_palabra = nullptr;
+    nueva->anterior = NULL;
+    nueva->siguiente = NULL;
+    nueva->primera_palabra = NULL;
     nueva->indice = 1;
     nueva->cant_palabras = 0;
     return nueva;
@@ -31,13 +29,13 @@ Linea crearLineaVacia() {
 //Pos-Cond: Agrega una nueva linea al final de la Linea "linea"
 void agregarLinea(Linea &linea) {
     Linea nueva = crearLineaVacia();
-    if (linea == nullptr) {
+    if (linea == NULL) {
         linea = nueva;
         return;
     }
 
     Linea ultima = linea;
-    while (siguienteLinea(ultima) != nullptr) {
+    while (siguienteLinea(ultima) != NULL) {
         ultima = siguienteLinea(ultima);
     }
 
@@ -52,7 +50,7 @@ void insertarLineaPosicion(Linea &linea, unsigned int posicionLinea) {
     nueva->indice = objetivo->indice;
     nueva->anterior = objetivo->anterior;
     nueva->siguiente = objetivo;
-    if (objetivo->anterior != nullptr)
+    if (objetivo->anterior != NULL)
         objetivo->anterior->siguiente = nueva;
     else
         linea = nueva; // era la cabeza
@@ -61,13 +59,13 @@ void insertarLineaPosicion(Linea &linea, unsigned int posicionLinea) {
 }
 
 void renumerarLineas(Linea &linea) {
-    if (linea == nullptr) return;
-    for (Linea a = linea->siguiente; a != nullptr; a = a->siguiente)
+    if (linea == NULL) return;
+    for (Linea a = linea->siguiente; a != NULL; a = a->siguiente)
         a->indice++;
 }
 
 void insertarPalabraEnPosicion(Linea &linea, unsigned int posicionPalabra, char *nomPalabra) {
-    if (linea == nullptr) return;
+    if (linea == NULL) return;
     insertarPalabraPosicion(linea->primera_palabra, posicionPalabra, nomPalabra);
     linea->cant_palabras++;
 }
@@ -145,7 +143,7 @@ Palabra primerPalabraLinea(Linea linea) {
 //Pre-Cond: No tiene
 //Pos-Cond: Retorna true si la Linea "linea" no tiene lineas.
 bool esVaciaLinea(Linea linea) {
-    return linea == nullptr;
+    return linea == NULL;
 }
 
 //Pre-Cond: No tiene
@@ -154,7 +152,7 @@ bool existeLinea(Linea linea, int numLinea) {
     // ineficiente y medio circular porque obtenerLinea asume que existe
     // (serviria que ella dependa de esta)
     Linea existente = obtenerLinea(linea, numLinea);
-    return existente != nullptr;
+    return existente != NULL;
 }
 
 //Pre-Cond: no tiene
@@ -171,12 +169,12 @@ void eliminarLinea(Linea &linea, int numLinea) {
     Linea anterior = borrar->anterior;
     Linea siguiente = borrar->siguiente;
 
-    if (anterior != nullptr) // 'anterior' no es el primero
+    if (anterior != NULL) // 'anterior' no es el primero
         anterior->siguiente = siguiente;
     else
         linea = siguiente;
 
-    if (siguiente != nullptr) // 'siguiente' no es el ultimo
+    if (siguiente != NULL) // 'siguiente' no es el ultimo
         siguiente->anterior = anterior;
 
     // Borrado
@@ -185,7 +183,7 @@ void eliminarLinea(Linea &linea, int numLinea) {
     delete borrar;
 
     // Renumerar
-    for (Linea a = siguiente; a != nullptr; a = a->siguiente)
+    for (Linea a = siguiente; a != NULL; a = a->siguiente)
         a->indice--;
 }
 
@@ -203,14 +201,14 @@ void eliminarPalabraPosicion(Linea &linea, int posicionPalabra) {
 //Pre-Cond: No tiene
 //Pos-Cond: Libera toda la memoria de la Linea "linea"
 void destruirLinea(Linea &linea) {
-    if (linea == nullptr) return;
+    if (linea == NULL) return;
 
     Linea inicio = obtenerLinea(linea, 1);
-    while (inicio != nullptr) {
+    while (inicio != NULL) {
         Linea borrar = inicio;
         inicio = inicio->siguiente;
         destruirPalabra(borrar->primera_palabra);
         delete borrar;
     }
-    linea = nullptr;
+    linea = NULL;
 }

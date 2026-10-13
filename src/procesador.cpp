@@ -3,7 +3,6 @@
 #include "../include/palabra.h"
 #include "../include/linea.h"
 #include "../include/procesador.h"
-
 #include <string.h>
 
 #ifndef MAX_CANT_PALABRAS_X_LINEA
@@ -35,8 +34,8 @@ static char *copiarUltimaPalabra(Linea linea) {
 //***********************  CONSTRUCTORAS ***************** */
 Procesador crearProcesadorVacio(char *nomProcesador) {
     Procesador procesador = new _rep_procesador();
-    procesador->inicio = nullptr;
-    procesador->final = nullptr;
+    procesador->inicio = NULL;
+    procesador->final = NULL;
     procesador->nombre = new char[strlen(nomProcesador) + 1];
     strcpy(procesador->nombre, nomProcesador);
     procesador->cant_lineas = 0;
@@ -44,8 +43,8 @@ Procesador crearProcesadorVacio(char *nomProcesador) {
 }
 
 bool insertarLineaProcesador(Procesador &p) {
-    if (p == nullptr) return false;
-    if (p->inicio == nullptr) {
+    if (p == NULL) return false;
+    if (p->inicio == NULL) {
         agregarLinea(p->inicio);
         p->final = p->inicio;
     } else {
@@ -57,7 +56,7 @@ bool insertarLineaProcesador(Procesador &p) {
 }
 
 bool insertarLineaEnPosicion(Procesador &p, int posicionLinea) {
-    if (p == nullptr) return false;
+    if (p == NULL) return false;
     if (1 > posicionLinea || posicionLinea > p->cant_lineas + 1) return false;
     if (posicionLinea == p->cant_lineas + 1) return insertarLineaProcesador(p);
     insertarLineaPosicion(p->inicio, posicionLinea);
@@ -66,7 +65,7 @@ bool insertarLineaEnPosicion(Procesador &p, int posicionLinea) {
 }
 
 bool insertarPalabraProcesador(Procesador &p, int posicionLinea, int posicionPalabra, Cadena palabraIngresar) {
-    if (p == nullptr || p->inicio == nullptr || posicionLinea < 1) return false;
+    if (p == NULL || p->inicio == NULL || posicionLinea < 1) return false;
 
     Linea lineaEditada = obtenerLinea(p->inicio, posicionLinea);
 
@@ -79,7 +78,7 @@ bool insertarPalabraProcesador(Procesador &p, int posicionLinea, int posicionPal
     while (cantidadDePalabraEnLinea(actual) >= overflowPosition) {
         char *overflow = copiarUltimaPalabra(actual);
         eliminarPalabraPosicion(actual, overflowPosition);
-        if (siguienteLinea(actual) == nullptr) insertarLineaProcesador(p);
+        if (siguienteLinea(actual) == NULL) insertarLineaProcesador(p);
         actual = siguienteLinea(actual);
         insertarPalabraEnPosicion(actual, 1, overflow);
         delete[] overflow;
@@ -95,12 +94,12 @@ Linea obtenerPrimeraLinea(Procesador p) {
 }
 
 int cantLineasProcesador(Procesador p) {
-    if (p == nullptr) return 0;
+    if (p == NULL) return 0;
     return p->cant_lineas;
 }
 
 bool imprimirLinea(Procesador p, int posicionLinea) {
-    if (p == nullptr) return false;
+    if (p == NULL) return false;
     if (posicionLinea < 1 || posicionLinea > p->cant_lineas) return false;
     imprimirLinea(p->inicio, posicionLinea);
     return true;
@@ -127,7 +126,7 @@ bool borrarPalabraProcesador(Procesador &p, int posicionLinea, int posicionPalab
 }
 
 bool borrarLineaProcesador(Procesador &a, int posicionLinea) {
-    if (a == nullptr || posicionLinea < 1 || posicionLinea > a->cant_lineas) return false;
+    if (a == NULL || posicionLinea < 1 || posicionLinea > a->cant_lineas) return false;
 
     if (posicionLinea == a->cant_lineas)
         a->final = anteriorLinea(a->final);
@@ -139,14 +138,14 @@ bool borrarLineaProcesador(Procesador &a, int posicionLinea) {
 }
 
 void borrarTodasLasLineas(Procesador &p) {
-    if (p == nullptr || p->cant_lineas < 1) return;
+    if (p == NULL || p->cant_lineas < 1) return;
     destruirLinea(p->inicio);
-    p->final = nullptr;
+    p->final = NULL;
     p->cant_lineas = 0;
 }
 
 void borrarProcesadorCompleto(Procesador &p) {
-    if (p == nullptr) return;
+    if (p == NULL) return;
     borrarTodasLasLineas(p);
     delete[] p->nombre;
     delete p;

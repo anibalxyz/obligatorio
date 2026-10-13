@@ -3,7 +3,6 @@
 #include "../include/palabra.h"
 #include <string.h>
 
-
 struct _rep_palabra {
     Palabra siguiente;
     char *valor;
@@ -16,7 +15,7 @@ struct _rep_palabra {
 //Pre-Cond:	No tiene
 //Pos-Cond:	Retorna una palabra vacia.
 Palabra crearPalabraVacia() {
-    return nullptr;
+    return NULL;
 }
 
 //Pre-Cond:	posicion<=cantidadPalabras(palabra)+1
@@ -25,17 +24,17 @@ void insertarPalabraPosicion(Palabra &palabra, unsigned int posicion, char *nomP
     Palabra nueva = new _rep_palabra();
     nueva->valor = new char[strlen(nomPalabra) + 1];
     strcpy(nueva->valor, nomPalabra);
-    nueva->siguiente = nullptr;
+    nueva->siguiente = NULL;
 
     if (posicion <= 1) {
-        nueva->siguiente = palabra; // nullptr si estaba vacía
+        nueva->siguiente = palabra; // NULL si estaba vacía
         palabra = nueva;
         return;
     }
 
     Palabra actual = palabra;
     // posicion >=2
-    while (actual->siguiente != nullptr) {
+    while (actual->siguiente != NULL) {
         if (posicion == 2) break;
         actual = actual->siguiente;
         posicion--;
@@ -65,7 +64,7 @@ Palabra siguientePalabra(Palabra palabra) {
 int cantidadPalabras(Palabra palabra) {
     if (esVaciaPalabra(palabra)) return 0;
     int cant = 1;
-    while (palabra->siguiente != nullptr) {
+    while (palabra->siguiente != NULL) {
         palabra = palabra->siguiente;
         cant++;
     }
@@ -76,13 +75,13 @@ int cantidadPalabras(Palabra palabra) {
 //Pre-Cond:	No tiene
 //Pos-Cond:	Retorna true si la Palabra palabra no tiene palabras
 bool esVaciaPalabra(Palabra palabra) {
-    return palabra == nullptr;
+    return palabra == NULL;
 }
 
 //Pre-Cond:	No tiene
 //Pos-Cond:	Retorna true si la palabra de nombre "nomPalabra" existe en la Palabra "palabra"
 bool existePalabra(Palabra palabra, char *nomPalabra) {
-    while (palabra != nullptr) {
+    while (palabra != NULL) {
         if (strcasecmp(palabra->valor, nomPalabra) == 0) return true;
         palabra = siguientePalabra(palabra);
     }
@@ -94,7 +93,7 @@ bool existePalabra(Palabra palabra, char *nomPalabra) {
 //Pre-Cond:	No tiene
 //Pos-Cond:	Libera toda la memoria reservada por la Palabra "palabra"
 void destruirPalabra(Palabra &palabra) {
-    while (palabra != nullptr) eliminarPalabra(palabra);
+    while (palabra != NULL) eliminarPalabra(palabra);
 }
 
 //Pre-Cond:	esVaciaPalabra(palabra) retorna false
