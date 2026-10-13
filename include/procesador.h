@@ -11,6 +11,8 @@
 #ifndef _PROCESADOR_H
 #define _PROCESADOR_H
 
+#include "linea.h"
+
 typedef char *Cadena;
 typedef struct _rep_procesador *Procesador;
 
@@ -31,6 +33,11 @@ bool insertarLineaProcesador(Procesador &p);
 bool insertarLineaEnPosicion(Procesador &p, int posicionLinea);
 
 //************************ SELECTORAS *******************************
+
+//Pre-Cond: p->inicio != NULL
+//Pos-Cond: retorna p->inicio
+Linea obtenerPrimeraLinea(Procesador p);
+
 //Pre-Cond: No tiene
 //Pos-Cond: Retorna un puntero a un arreglo con el nombre del Procesador "p"
 char *obtenerNombreProcesador(Procesador p);

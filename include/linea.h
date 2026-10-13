@@ -108,7 +108,7 @@ bool existePalabraLinea(Linea linea, char *nomPalabra);
 
 //Pre-Cond: existeLinea(linea, numLinea) retorna true;
 //Pos-Cond: Elimina la linea num linea renumerando todas las otras lineas debajo de ella.
-void eliminarLinea(Linea &linea, int numLinea);
+void eliminarLinea(Linea &borrar, int numLinea);
 
 //Pre-Cond:	No tiene
 //Pos-Cond: Elimina la Palabra llamada  de nombre "nomPalabra" de la Linea "linea" en todas las ocurrencias.

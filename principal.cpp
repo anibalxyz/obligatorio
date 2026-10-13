@@ -1,4 +1,4 @@
-/* 1111111 */ // sustituir con los 7 dígitos de la cédula
+/* 5600400 */ // sustituir con los 7 dígitos de la cédula
 
 /* Módulo principal de la tarea de EDA
 
@@ -8,7 +8,7 @@ Cada comando tiene un nombre el cual solicitara los distintos datos
 
 
 El comando Fin termina el programa
-Laboratorio de EDA 2026 UTU - LATU - Turno Nocturno 
+Laboratorio de EDA 2026 UTU - LATU - Turno Nocturno
 Profesor Ing. Ferando Arrieta
 
 */
@@ -20,6 +20,8 @@ Profesor Ing. Ferando Arrieta
 #include <string.h>
 #include <stdlib.h>
 #include <cstddef>
+
+#include "linea.h"
 #define MAX_PALABRA 64
 #define MAX_LINEA 256
 #define MAX_NOMBRE 25
@@ -163,10 +165,10 @@ int main() {
                 strcpy(palabra, token);
                 //****************************************************************
 
-            else if (0 == strcmp(nombre_comando, "ImprimirLinea") && (cont == 2))
+            else if (0 == strcmp(nombre_comando, "ImprimirLinea") && (cont == 2)) {
                 strcpy(numeroLinea, token);
-
-            else if (0 == strcmp(nombre_comando, "IngresarPalabraDiccionario") && (cont == 2))
+                sscanf(numeroLinea, "%u", &numeroLin);
+            } else if (0 == strcmp(nombre_comando, "IngresarPalabraDiccionario") && (cont == 2))
                 strcpy(palabra, token);
 
             else if (0 == strcmp(nombre_comando, "BorrarPalabraDiccionario") && (cont == 2))
@@ -330,6 +332,7 @@ int main() {
         // if
         fgets(restoLinea, MAX_LINEA + 1, stdin);
     } // while
+    borrarProcesadorCompleto(p);
     return 0;
 } // main
 
@@ -338,27 +341,33 @@ int main() {
 //Obligatorio 1 y
 
 Procesador crearProcesador(Cadena nombre) {
-    return NULL;
+    return crearProcesadorVacio(nombre);
 }
 
 TipoRet borrarProcesador(Procesador &p) {
-    return NO_IMPLEMENTADA;
+    borrarProcesadorCompleto(p);
+    return OK;
 }
 
 TipoRet insertarLinea(Procesador &p) {
-    return NO_IMPLEMENTADA;
+    if (insertarLineaProcesador(p)) {
+        return OK;
+    }
+    return ERROR;
 }
 
 TipoRet insertarLineaEnPosicion(Procesador &p, Posicion PosisionLinea) {
-    return NO_IMPLEMENTADA;
+    int pos = (int) PosisionLinea;
+    return insertarLineaEnPosicion(p, pos) ? OK : ERROR;
 }
 
-TipoRet borrarLinea(Procesador &a, Posicion posicionLinea) {
-    return NO_IMPLEMENTADA;
+TipoRet borrarLinea(Procesador &p, Posicion posicionLinea) {
+    return borrarLineaProcesador(p, (int) posicionLinea) ? OK : ERROR;
 }
 
 TipoRet borrarTodo(Procesador &p) {
-    return NO_IMPLEMENTADA;
+    borrarTodasLasLineas(p);
+    return OK;
 }
 
 TipoRet borrarOcurrenciasPalabraEnTexto(Procesador &p, Cadena palabraABorrar) {
@@ -370,11 +379,12 @@ TipoRet comprimirTexto(Procesador &p) {
 }
 
 TipoRet insertarPalabra(Procesador &p, Posicion posicionLinea, Posicion posicionPalabra, Cadena palabraIngresar) {
-    return NO_IMPLEMENTADA;
+    if (posicionLinea > (Posicion) cantLineasProcesador(p)) return ERROR;
+    return insertarPalabraProcesador(p, (int) posicionLinea, (int) posicionPalabra, palabraIngresar) ? OK : ERROR;
 }
 
 TipoRet borrarPalabra(Procesador &p, Posicion posicionLinea, Posicion posicionPalabra) {
-    return NO_IMPLEMENTADA;
+    return borrarPalabraProcesador(p, (int) posicionLinea, (int) posicionPalabra) ? OK : ERROR;
 }
 
 TipoRet borrarOcurrenciasPalabraEnLinea(Procesador &p, Posicion posicionLinea, Cadena palabraABorrar) {
@@ -382,7 +392,8 @@ TipoRet borrarOcurrenciasPalabraEnLinea(Procesador &p, Posicion posicionLinea, C
 }
 
 TipoRet imprimirLinea(Procesador p, Posicion posicionLinea) {
-    return NO_IMPLEMENTADA;
+    int pos = (int) posicionLinea;
+    return imprimirLinea(p, pos) ? OK : ERROR;
 }
 
 TipoRet ingresarPalabraDiccionario(Procesador &p, Cadena palabraAIngresar) {
@@ -390,7 +401,17 @@ TipoRet ingresarPalabraDiccionario(Procesador &p, Cadena palabraAIngresar) {
 }
 
 TipoRet imprimirTexto(Procesador p) {
-    return NO_IMPLEMENTADA;
+    if (esVacioProcesador(p)) {
+        printf("Texto vacio\n");
+        return OK;
+    }
+    Linea inicio = obtenerPrimeraLinea(p);
+    for (int i = 1; i <= cantLineasProcesador(p); i++) {
+        imprimirLinea(inicio, i);
+        inicio = siguienteLinea(inicio);
+    }
+
+    return OK;
 }
 
 TipoRet borrarPalabraDiccionario(Procesador &p, Cadena palabraABorrar) {
